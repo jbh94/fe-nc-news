@@ -39,8 +39,8 @@ class SingleArticle extends React.Component {
         </Link>
         <p>{created_at}</p>
         <p>{body}</p>
-        <p>Comments: {comment_count}</p>
         <p>Number of votes: {votes}</p>
+        <p>Comments: {comment_count}</p>
         <CommentList article_id={article.article_id} />
       </div>
     );
