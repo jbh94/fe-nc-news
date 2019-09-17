@@ -28,8 +28,8 @@ class ArticleContainer extends React.Component {
           <Link className="article-link" to={`/users/${author}`}>
             <p>{author}</p>
           </Link>
-          <p>comments: {comment_count}</p>
           <p>votes: {votes}</p>
+          <p>comments: {comment_count}</p>
         </div>
       </div>
     );

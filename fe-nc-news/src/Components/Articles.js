@@ -11,6 +11,7 @@ class Articles extends React.Component {
 
   render() {
     const { isLoading, articles } = this.state;
+
     if (isLoading === true) return <Loading />;
     return (
       <div>
@@ -26,8 +27,7 @@ class Articles extends React.Component {
   }
 
   fetchArticles = () => {
-    api.getArticles('articles').then(({ articles }) => {
-      console.log(articles);
+    api.getArticles().then(({ articles }) => {
       this.setState({ articles, isLoading: false });
     });
   };

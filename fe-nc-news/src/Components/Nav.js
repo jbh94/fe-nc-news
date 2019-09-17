@@ -7,16 +7,16 @@ function Nav() {
       <ul>
         <li>
           <Link className="link-style" to="/">
-            Latest
+            Home
           </Link>
         </li>
         <li>
-          <Link className="link-style" to="/">
+          <Link className="link-style" to="/topics">
             Topics
           </Link>
         </li>
         <li>
-          <Link className="link-style" to="/">
+          <Link className="link-style" to="/articles">
             Articles
           </Link>
         </li>
