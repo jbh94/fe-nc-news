@@ -23,14 +23,33 @@ class Articles extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchArticles();
+    const { uri, slug } = this.props;
+    if (uri === `/topics/${slug}`) {
+      this.fetchAllTopics();
+    } else this.fetchArticles();
   }
+
+  fetchData = () => {};
 
   fetchArticles = () => {
     api.getArticles().then(({ articles }) => {
       this.setState({ articles, isLoading: false });
     });
   };
+
+  fetchAllTopics = () => {
+    const { slug } = this.props;
+    api.getTopicsFromArticles(slug).then(({ articles }) => {
+      this.setState({ articles, isLoading: false });
+    });
+  };
+
+  componentDidUpdate(prevProps) {
+    console.log(this.props.uri);
+    if (prevProps.topic !== this.props.topic) {
+      this.fetchArticles();
+    }
+  }
 }
 
 export default Articles;

@@ -3,6 +3,7 @@ import * as api from '../api';
 import Loading from './Loading';
 import ErrorHandler from './ErrorHandler';
 import { Link } from '@reach/router';
+import CommentList from './CommentList';
 
 class SingleArticle extends React.Component {
   state = {
@@ -40,6 +41,7 @@ class SingleArticle extends React.Component {
         <p>{body}</p>
         <p>Comments: {comment_count}</p>
         <p>Number of votes: {votes}</p>
+        <CommentList article_id={article.article_id} />
       </div>
     );
   }

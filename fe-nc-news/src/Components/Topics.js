@@ -1,7 +1,7 @@
 import React from 'react';
-import * as api from '../../api';
-import TopicsContainer from '../TopicsContainer';
-import Loading from '../Loading';
+import * as api from '../api';
+import TopicsContainer from './TopicsContainer';
+import Loading from './Loading';
 
 class Topics extends React.Component {
   state = {
