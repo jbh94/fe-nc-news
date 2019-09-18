@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import ErrorHandler from './ErrorHandler';
-import VoteUpdater from './VoteUpdater';
+import VoteUpdater from './VoteUpdaterComment';
 
 class Comment extends React.Component {
   state = { err: null };
@@ -28,7 +28,6 @@ class Comment extends React.Component {
         <h2>{created_at}</h2>
         <p>{body}</p>
         <VoteUpdater votes={votes} comment_id={comment_id} />
-        <p></p>
       </div>
     );
   }

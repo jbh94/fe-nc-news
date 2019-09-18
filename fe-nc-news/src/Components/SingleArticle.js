@@ -4,6 +4,7 @@ import Loading from './Loading';
 import ErrorHandler from './ErrorHandler';
 import { Link } from '@reach/router';
 import CommentList from './CommentList';
+import VoteUpdaterArticle from './VoteUpdaterArticle';
 
 class SingleArticle extends React.Component {
   state = {
@@ -14,6 +15,7 @@ class SingleArticle extends React.Component {
 
   render() {
     const { isLoading, article, err } = this.state;
+    console.log(this.state, 'this.state in singlearticle');
 
     const {
       author,
@@ -24,6 +26,7 @@ class SingleArticle extends React.Component {
       votes,
       body
     } = article;
+    console.log(votes);
 
     if (isLoading) return <Loading />;
     if (err) return <ErrorHandler {...err} />;
@@ -39,7 +42,7 @@ class SingleArticle extends React.Component {
         </Link>
         <p>{created_at}</p>
         <p>{body}</p>
-        <p>Number of votes: {votes}</p>
+        <VoteUpdaterArticle votes={votes} article_id={article.article_id} />
         <p>Comments: {comment_count}</p>
         <CommentList article_id={article.article_id} />
       </div>

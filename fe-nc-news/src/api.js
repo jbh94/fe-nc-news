@@ -42,6 +42,10 @@ export const patchCommentVotes = (comment_id, inc_votes) => {
   return request.patch(`/comments/${comment_id}`, { inc_votes });
 };
 
+export const patchArticleVotes = (article_id, inc_votes) => {
+  return request.patch(`/articles/${article_id}`, { inc_votes });
+};
+
 // ASYNC/AWAIT METHOD
 
 // export const getArticles = async () => {

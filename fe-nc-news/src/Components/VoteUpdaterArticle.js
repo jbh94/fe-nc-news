@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import arrowUp from '@iconify/icons-foundation/arrow-up';
 import arrowDown from '@iconify/icons-foundation/arrow-down';
 
-class VoteUpdater extends React.Component {
+class VoteUpdaterArticle extends React.Component {
   state = {
     voteChange: 0
   };
@@ -19,7 +19,7 @@ class VoteUpdater extends React.Component {
           icon={arrowUp}
           color="#ffffff"
           className="vote-arrow"
-          onClick={() => this.updateVotes(1)}
+          onClick={() => this.updateArticleVotes(1)}
           value="1"
         />
         <p>Votes: {votes + voteChange}</p>
@@ -27,16 +27,16 @@ class VoteUpdater extends React.Component {
           icon={arrowDown}
           className="vote-arrow"
           color="#ffffff"
-          onClick={() => this.updateVotes(-1)}
+          onClick={() => this.updateArticleVotes(-1)}
           value="1"
         />
       </div>
     );
   }
 
-  updateVotes = inc_votes => {
-    const { comment_id } = this.props;
-    api.patchCommentVotes(comment_id, inc_votes).then(() => {
+  updateArticleVotes = inc_votes => {
+    const { article_id } = this.props;
+    api.patchArticleVotes(article_id, inc_votes).then(() => {
       this.setState(currentState => {
         return { voteChange: currentState.voteChange + inc_votes };
       });
@@ -44,4 +44,4 @@ class VoteUpdater extends React.Component {
   };
 }
 
-export default VoteUpdater;
+export default VoteUpdaterArticle;
