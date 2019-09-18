@@ -122,6 +122,13 @@ h4 {
   color: rgb(147, 181, 204);
 }
 
+.vote-arrow {
+  font-size: 35px;
+  border: 1px solid #c9d9e0;
+  border-radius: 20px;
+  background-color: #c9d9e0;
+}
+
 .article-container {
   display: flex;
   flex-direction: column;
@@ -145,6 +152,7 @@ h4 {
   margin-top: 20px;
   border-radius: 5px;
   background-color: rgb(163, 182, 204);
+  padding-bottom: 15px;
 }
 
 .comment-box p {

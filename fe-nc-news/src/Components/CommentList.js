@@ -13,7 +13,6 @@ class CommentList extends React.Component {
       isLoading,
       err
     } = this.state;
-    console.log(comments, 'this.state');
 
     if (isLoading) return <Loading />;
     if (err) return <ErrorHandler {...err} />;

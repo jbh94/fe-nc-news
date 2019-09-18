@@ -1,11 +1,19 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import ErrorHandler from './ErrorHandler';
+import VoteUpdater from './VoteUpdater';
 
 class Comment extends React.Component {
-  state = { comment: this.props.comment, err: null };
+  state = { err: null };
   render() {
-    const { author, created_at, body, votes, err } = this.state.comment;
+    const {
+      author,
+      created_at,
+      body,
+      err,
+      votes,
+      comment_id
+    } = this.props.comment;
 
     if (err) {
       return <ErrorHandler {...err} />;
@@ -19,7 +27,8 @@ class Comment extends React.Component {
         }
         <h2>{created_at}</h2>
         <p>{body}</p>
-        <p>Votes: {votes}</p>
+        <VoteUpdater votes={votes} comment_id={comment_id} />
+        <p></p>
       </div>
     );
   }

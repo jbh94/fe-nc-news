@@ -19,7 +19,6 @@ export const getTopicsFromArticles = slug => {
 };
 
 export const getArticle = article_id => {
-  console.log(article_id, 'api id');
   return request.get(`/articles/${article_id}`).then(({ data: article }) => {
     return article;
   });
@@ -35,9 +34,12 @@ export const getComments = article_id => {
   return request
     .get(`/articles/${article_id}/comments`)
     .then(({ data: comments }) => {
-      console.log(comments);
       return comments;
     });
+};
+
+export const patchCommentVotes = (comment_id, inc_votes) => {
+  return request.patch(`/comments/${comment_id}`, { inc_votes });
 };
 
 // ASYNC/AWAIT METHOD
