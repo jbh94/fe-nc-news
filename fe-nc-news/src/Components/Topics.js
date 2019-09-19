@@ -6,7 +6,9 @@ import Loading from './Loading';
 class Topics extends React.Component {
   state = {
     topics: null,
-    isLoading: true
+    isLoading: true,
+    topic: '',
+    articles: null
   };
 
   render() {

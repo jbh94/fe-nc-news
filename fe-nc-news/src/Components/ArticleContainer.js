@@ -24,7 +24,7 @@ class ArticleContainer extends React.Component {
           <Link className="article-link" to={`/topics/${topic}`}>
             <h3>{topic}</h3>
           </Link>
-          <p>posted at: {created_at}</p>
+          <p>posted at: {new Date(created_at).toLocaleString()}</p>
           <Link className="article-link" to={`/users/${author}`}>
             <p>{author}</p>
           </Link>

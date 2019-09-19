@@ -9,25 +9,39 @@ import Homepage from './Components/Pages/Homepage';
 import Topics from './Components/Topics';
 import SingleArticlePage from './Components/Pages/SingleArticlePage';
 import ErrorHandler from './Components/ErrorHandler';
+import Users from './Components/Users';
 
 class App extends React.Component {
+  state = {
+    username: 'jessjelly'
+  };
   render() {
+    const { username } = this.state;
     return (
       <div className="App">
-        <Header />
+        <Header username={username} handleUserChange={this.handleUserChange} />
         <Nav />
         <Router>
           <Homepage path="/" />
           <Articles path="/articles" />
+          <Users
+            path="/users/:username"
+            handleUserChange={this.handleUserChange}
+            username={username}
+          />
           <Articles path="/topics/:slug" />
-          <SingleArticlePage path="/articles/:article_id" />
-          <Topics path="/topics" />
+          <SingleArticlePage path="/articles/:article_id" username={username} />
+          <Topics path="/topics" username={username} />
           <ErrorHandler default />
         </Router>
         <Footer />
       </div>
     );
   }
+  handleUser = event => {
+    const { username } = event.target;
+    this.setState({ username });
+  };
 }
 
 export default App;

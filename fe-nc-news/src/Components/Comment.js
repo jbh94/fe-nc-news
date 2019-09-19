@@ -4,7 +4,7 @@ import ErrorHandler from './ErrorHandler';
 import VoteUpdater from './VoteUpdaterComment';
 
 class Comment extends React.Component {
-  state = { err: null };
+  state = { err: null, comments: {} };
   render() {
     const {
       author,
@@ -14,6 +14,8 @@ class Comment extends React.Component {
       votes,
       comment_id
     } = this.props.comment;
+    const { isLoading, comments, article, error } = this.state;
+    console.log(this.props.comment, 'propsss');
 
     if (err) {
       return <ErrorHandler {...err} />;
@@ -25,7 +27,7 @@ class Comment extends React.Component {
             <h3>{author}</h3>
           </Link>
         }
-        <h2>{created_at}</h2>
+        <h2>{new Date(created_at).toLocaleString()}</h2>
         <p>{body}</p>
         <VoteUpdater votes={votes} comment_id={comment_id} />
       </div>

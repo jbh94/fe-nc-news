@@ -129,6 +129,36 @@ h4 {
   background-color: #c9d9e0;
 }
 
+.sort-style {
+  padding-top: 10px;
+}
+
+.form-style {
+  background-color: #c9d9e0;
+  border: 2px solid #8799a1;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.form-submit {
+  background-color: #c9d9e0;
+  border: 2px solid #8799a1;
+  border-radius: 6px;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.form-textbox {
+  background-color: #c9d9e0;
+  border: 2px solid #8799a1;
+  font-size: 12px;
+  margin: 5px;
+  resize: none;
+  width: 75%;
+  height: 100px;
+  margin: 20px;
+}
+
 .article-container {
   display: flex;
   flex-direction: column;

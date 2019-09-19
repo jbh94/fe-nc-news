@@ -2,11 +2,14 @@ import React from 'react';
 import * as api from '../api';
 import ArticleContainer from './ArticleContainer';
 import Loading from '../Components/Loading';
+import Sort from './Sort';
 
 class Articles extends React.Component {
   state = {
-    articles: null,
-    isLoading: true
+    articles: {},
+    isLoading: true,
+    order: 'desc',
+    sort_by: 'created_at'
   };
 
   render() {
@@ -15,6 +18,7 @@ class Articles extends React.Component {
     if (isLoading === true) return <Loading />;
     return (
       <div>
+        <Sort fetchAllArticles={this.fetchAllArticles} />
         {articles.map(article => {
           return <ArticleContainer key={article.article_id} {...article} />;
         })}
@@ -29,7 +33,18 @@ class Articles extends React.Component {
     } else this.fetchArticles();
   }
 
-  fetchData = () => {};
+  componentDidUpdate(prevProps) {
+    console.log(this.props.uri);
+    if (prevProps.topic !== this.props.topic) {
+      this.fetchArticles();
+    }
+  }
+
+  fetchAllArticles = (sort_by, order) => {
+    api.getArticlesWithParams(null, sort_by, order).then(articles => {
+      this.setState({ articles, isLoading: false });
+    });
+  };
 
   fetchArticles = () => {
     api.getArticles().then(({ articles }) => {
@@ -43,13 +58,6 @@ class Articles extends React.Component {
       this.setState({ articles, isLoading: false });
     });
   };
-
-  componentDidUpdate(prevProps) {
-    console.log(this.props.uri);
-    if (prevProps.topic !== this.props.topic) {
-      this.fetchArticles();
-    }
-  }
 }
 
 export default Articles;

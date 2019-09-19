@@ -5,12 +5,15 @@ import ErrorHandler from './ErrorHandler';
 import { Link } from '@reach/router';
 import CommentList from './CommentList';
 import VoteUpdaterArticle from './VoteUpdaterArticle';
+import AddComment from './AddComment';
 
 class SingleArticle extends React.Component {
   state = {
     article: {},
     isLoading: true,
-    err: null
+    err: null,
+    sort_by: 'created_at',
+    order: 'desc'
   };
 
   render() {
@@ -26,10 +29,13 @@ class SingleArticle extends React.Component {
       votes,
       body
     } = article;
-    console.log(votes);
 
     if (isLoading) return <Loading />;
     if (err) return <ErrorHandler {...err} />;
+
+    const { id, username } = this.props;
+    console.log(this.props, 'thisprops singlearticle');
+    console.log(this.props.article, 'this.props.comments');
 
     return (
       <div className="article-container">
@@ -40,9 +46,16 @@ class SingleArticle extends React.Component {
         <Link className="article-link" to={`/topics/${topic}`}>
           <p>{topic}</p>
         </Link>
-        <p>{created_at}</p>
+        <p>{new Date(created_at).toLocaleString()}</p>
         <p>{body}</p>
         <VoteUpdaterArticle votes={votes} article_id={article.article_id} />
+
+        <AddComment
+          username={this.props.username}
+          article_id={this.props.id}
+          addTheComment={this.addComment}
+        />
+
         <p>Comments: {comment_count}</p>
         <CommentList article_id={article.article_id} />
       </div>
@@ -52,6 +65,15 @@ class SingleArticle extends React.Component {
   componentDidMount() {
     this.getArticleById();
   }
+
+  addComment = comment => {
+    const { id, username } = this.props;
+    api.postComment(id, comment, { username }).then(newComment => {
+      this.setState(({ comments }) => {
+        return { comments: { newComment, ...comments } };
+      });
+    });
+  };
 
   getArticleById = () => {
     api

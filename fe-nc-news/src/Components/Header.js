@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header() {
+function Header(props) {
   return (
     <div className="header">
       <div>
@@ -11,6 +11,19 @@ function Header() {
         />
       </div>
       <h1>NC News</h1>
+      <form>
+        <div>
+          <select
+            type="text"
+            name="username"
+            value={props.username}
+            onChange={props.handleUser}
+          >
+            <option value="jessjelly"> jessjelly</option>
+          </select>
+        </div>
+        <p>Logged in: {props.username}</p>
+      </form>
     </div>
   );
 }

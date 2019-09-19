@@ -12,6 +12,20 @@ export const getArticles = queries => {
     });
 };
 
+export const getArticlesWithParams = (topic, sort_by, order) => {
+  return request
+    .get('/articles', {
+      params: {
+        sort_by: sort_by,
+        order: order,
+        topic: topic
+      }
+    })
+    .then(({ data }) => {
+      return data.articles;
+    });
+};
+
 export const getTopicsFromArticles = slug => {
   return request.get(`/articles?topic=${slug}`).then(({ data: articles }) => {
     return articles;
@@ -44,6 +58,29 @@ export const patchCommentVotes = (comment_id, inc_votes) => {
 
 export const patchArticleVotes = (article_id, inc_votes) => {
   return request.patch(`/articles/${article_id}`, { inc_votes });
+};
+
+export const postComment = (article_id, body, { username }) => {
+  console.log(body, username, 'body-username');
+  return request
+    .post(`/articles/${article_id}/comments`, { body, username })
+    .then(({ data: comment }) => {
+      return comment;
+    });
+};
+
+export const deleteComment = comment_id => {
+  return request
+    .delete(`/comments/${comment_id}`, { comment_id })
+    .then(({ data: comment }) => {
+      return comment;
+    });
+};
+
+export const getUser = username => {
+  return request.get(`/users/${username}`).then(({ data: user }) => {
+    return user;
+  });
 };
 
 // ASYNC/AWAIT METHOD

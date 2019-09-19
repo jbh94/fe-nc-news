@@ -19,9 +19,17 @@ class CommentList extends React.Component {
 
     return (
       <div>
-        {comments.map(comment => {
-          return <Comment comment={comment} key={comment.comment_id} />;
-        })}
+        <div>
+          {comments.map(comment => {
+            return (
+              <Comment
+                comment={comment}
+                key={comment.comment_id}
+                body={comment.body}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }
