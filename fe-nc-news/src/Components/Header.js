@@ -12,7 +12,7 @@ function Header(props) {
       </div>
       <h1>NC News</h1>
       <form>
-        <div>
+        <div className="user-header">
           <select
             type="text"
             name="username"
@@ -21,8 +21,8 @@ function Header(props) {
           >
             <option value="jessjelly"> jessjelly</option>
           </select>
+          <p>Logged in: {props.username}</p>
         </div>
-        <p>Logged in: {props.username}</p>
       </form>
     </div>
   );

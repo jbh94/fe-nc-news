@@ -15,23 +15,23 @@ class VoteUpdater extends React.Component {
 
     return (
       <div>
-        <Icon
-          icon={arrowUp}
-          color="#ffffff"
-          className="vote-arrow"
+        <button
+          className="vote-button"
           onClick={() => this.updateVotes(1)}
-          value="1"
           disabled={voteChange >= 1}
-        />
-        <p>Votes: {votes + voteChange}</p>
-        <Icon
-          icon={arrowDown}
-          className="vote-arrow"
-          color="#ffffff"
-          onClick={() => this.updateVotes(-1)}
           value="1"
-          disabled={voteChange >= -1}
-        />
+        >
+          Upvote
+        </button>
+        <p>Votes: {votes + voteChange}</p>
+        <button
+          className="vote-button"
+          onClick={() => this.updateVotes(-1)}
+          disabled={voteChange === -1}
+          value="1"
+        >
+          Downvote
+        </button>
       </div>
     );
   }
