@@ -69,9 +69,7 @@ class SingleArticle extends React.Component {
   addComment = comment => {
     const { id, username } = this.props;
     api.postComment(id, comment, { username }).then(newComment => {
-      this.setState(({ comments }) => {
-        return { comments: { newComment, ...comments } };
-      });
+      this.setState({ newComment });
     });
   };
 
