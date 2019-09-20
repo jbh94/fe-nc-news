@@ -10,7 +10,6 @@ class Users extends React.Component {
 
   render() {
     const { user, isLoading } = this.state;
-    console.log(this.state.user, 'user state');
     if (isLoading) return <Loading />;
     return (
       <div className="container">

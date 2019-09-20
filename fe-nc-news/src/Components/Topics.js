@@ -30,9 +30,16 @@ class Topics extends React.Component {
   }
 
   fetchTopics = () => {
-    api.getTopics().then(({ topics }) => {
-      this.setState({ topics, isLoading: false });
-    });
+    api
+      .getTopics()
+      .then(({ topics }) => {
+        this.setState({ topics, isLoading: false });
+      })
+      .catch(({ response }) => {
+        const { status } = response;
+        const { msg } = response.data;
+        this.setState({ isLoading: false, err: { status, msg } });
+      });
   };
 }
 

@@ -1,5 +1,8 @@
 import React from 'react';
 import * as api from '../api';
+import { Icon } from '@iconify/react';
+import arrowUp from '@iconify/icons-foundation/arrow-up';
+import arrowDown from '@iconify/icons-foundation/arrow-down';
 
 class VoteUpdater extends React.Component {
   state = {
@@ -18,7 +21,7 @@ class VoteUpdater extends React.Component {
           disabled={voteChange >= 1}
           value="1"
         >
-          Upvote
+          <Icon icon={arrowUp} color="#ffffff" className="vote-arrow" />
         </button>
         <p>Votes: {votes + voteChange}</p>
         <button
@@ -27,7 +30,7 @@ class VoteUpdater extends React.Component {
           disabled={voteChange === -1}
           value="1"
         >
-          Downvote
+          <Icon icon={arrowDown} color="#ffffff" className="vote-arrow" />
         </button>
       </div>
     );

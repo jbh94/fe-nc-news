@@ -141,11 +141,9 @@ h4 {
 }
 
 .vote-button {
-  background-color: #c9d9e0;
-  border: 2px solid #8799a1;
-  border-radius: 6px;
   font-size: 12px;
   margin: 5px;
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -219,17 +217,17 @@ h4 {
   text-decoration: none;
 }
 
+.header-button-profile {
+  text-decoration: none;
+  color: black;
+}
+
 .header-button {
   background-color: #c9d9e0;
   border: 2px solid #8799a1;
   border-radius: 6px;
   font-size: 12px;
   cursor: pointer;
-}
-
-.header-button-profile {
-  text-decoration: none;
-  color: black;
 }
 
 h3 {

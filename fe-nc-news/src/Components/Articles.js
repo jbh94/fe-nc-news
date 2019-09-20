@@ -34,7 +34,6 @@ class Articles extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.uri);
     if (prevProps.topic !== this.props.topic) {
       this.fetchArticles();
     }

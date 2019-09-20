@@ -15,13 +15,13 @@ function Header(props) {
       <form>
         <div className="user-header">
           <select
+            readOnly
             className="header-button"
             type="text"
-            name="username"
             value={props.username}
             onChange={props.handleUser}
           >
-            <option value="jessjelly"> jessjelly</option>
+            <option> jessjelly</option>
           </select>
           <p>
             Logged in: {props.username}

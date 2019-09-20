@@ -36,7 +36,6 @@ class AddComment extends React.Component {
   };
 
   onSubmit = e => {
-    console.log(e);
     e.preventDefault();
     const { body } = this.state;
     this.props.addComment(body);

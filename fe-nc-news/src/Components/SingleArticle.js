@@ -17,7 +17,6 @@ class SingleArticle extends React.Component {
 
   render() {
     const { isLoading, article, err } = this.state;
-    console.log(this.state, 'this.state in singlearticle');
 
     const {
       author,
@@ -32,9 +31,7 @@ class SingleArticle extends React.Component {
     if (isLoading) return <Loading />;
     if (err) return <ErrorHandler {...err} />;
 
-    const { id, username } = this.props;
-    console.log(this.props, 'thisprops singlearticle');
-    console.log(this.props.article, 'this.props.comments');
+    const { username } = this.props;
 
     return (
       <div className="article-container">

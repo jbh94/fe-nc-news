@@ -14,8 +14,6 @@ class Comment extends React.Component {
       votes,
       comment_id
     } = this.props.comment;
-    const { isLoading, comments, article, error } = this.state;
-    console.log(this.props.comment, 'propsss');
 
     if (err) {
       return <ErrorHandler {...err} />;

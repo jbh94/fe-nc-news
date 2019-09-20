@@ -39,15 +39,21 @@ class CommentList extends React.Component {
   addComment = comment => {
     const { id, username } = this.props;
 
-    api.postComment(id, { body: comment, username }).then(newComment => {
-      this.setState((prevState, prevProps) => {
-        console.log(prevState);
-        const arr = [newComment, ...prevState.comments];
-        return {
-          comments: arr
-        };
+    api
+      .postComment(id, { body: comment, username })
+      .then(newComment => {
+        this.setState((prevState, prevProps) => {
+          const arr = [newComment, ...prevState.comments];
+          return {
+            comments: arr
+          };
+        });
+      })
+      .catch(({ response }) => {
+        const { status } = response;
+        const { msg } = response.data;
+        this.setState({ isLoading: false, err: { status, msg } });
       });
-    });
   };
 
   componentDidMount = () => {
