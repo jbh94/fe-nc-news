@@ -9,7 +9,7 @@ function Footer() {
           className="footer-a"
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/radiob0x/fe-nc-news/"
+          href="https://github.com/radiob0x/"
         >
           Joe Humphreys
         </a>

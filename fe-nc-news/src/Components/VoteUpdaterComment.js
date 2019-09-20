@@ -1,8 +1,5 @@
 import React from 'react';
 import * as api from '../api';
-import { Icon } from '@iconify/react';
-import arrowUp from '@iconify/icons-foundation/arrow-up';
-import arrowDown from '@iconify/icons-foundation/arrow-down';
 
 class VoteUpdater extends React.Component {
   state = {

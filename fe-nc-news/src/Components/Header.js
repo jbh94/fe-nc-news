@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@reach/router';
 
 function Header(props) {
   return (
@@ -14,6 +15,7 @@ function Header(props) {
       <form>
         <div className="user-header">
           <select
+            className="header-button"
             type="text"
             name="username"
             value={props.username}
@@ -21,7 +23,19 @@ function Header(props) {
           >
             <option value="jessjelly"> jessjelly</option>
           </select>
-          <p>Logged in: {props.username}</p>
+          <p>
+            Logged in: {props.username}
+            <br></br>
+            <br></br>
+            <button className="header-button">
+              <Link
+                className="header-button-profile"
+                to={`/users/${props.username}`}
+              >
+                View Profile
+              </Link>
+            </button>
+          </p>
         </div>
       </form>
     </div>

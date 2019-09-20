@@ -39,7 +39,7 @@ class AddComment extends React.Component {
     console.log(e);
     e.preventDefault();
     const { body } = this.state;
-    this.props.addTheComment(body);
+    this.props.addComment(body);
   };
 }
 

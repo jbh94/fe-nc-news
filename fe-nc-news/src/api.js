@@ -60,11 +60,10 @@ export const patchArticleVotes = (article_id, inc_votes) => {
   return request.patch(`/articles/${article_id}`, { inc_votes });
 };
 
-export const postComment = (article_id, body, { username }) => {
-  console.log(body, username, 'body-username');
+export const postComment = (article_id, comment) => {
   return request
-    .post(`/articles/${article_id}/comments`, { body, username })
-    .then(({ data: comment }) => {
+    .post(`/articles/${article_id}/comments`, comment)
+    .then(({ data: { comment } }) => {
       return comment;
     });
 };
@@ -72,7 +71,7 @@ export const postComment = (article_id, body, { username }) => {
 export const deleteComment = comment_id => {
   return request
     .delete(`/comments/${comment_id}`, { comment_id })
-    .then(({ data: comment }) => {
+    .then(({ data: { comment } }) => {
       return comment;
     });
 };

@@ -3,22 +3,24 @@ import Comment from './Comment';
 import * as api from '../api';
 import Loading from './Loading';
 import ErrorHandler from './ErrorHandler';
+import AddComment from './AddComment';
 
 class CommentList extends React.Component {
   state = { comments: {}, isLoading: true };
 
   render() {
-    const {
-      comments: { comments },
-      isLoading,
-      err
-    } = this.state;
+    const { comments, isLoading, err } = this.state;
 
     if (isLoading) return <Loading />;
     if (err) return <ErrorHandler {...err} />;
 
     return (
       <div>
+        <AddComment
+          username={this.props.username}
+          article_id={this.props.id}
+          addComment={this.addComment}
+        />
         <div>
           {comments.map(comment => {
             return (
@@ -34,8 +36,22 @@ class CommentList extends React.Component {
     );
   }
 
+  addComment = comment => {
+    const { id, username } = this.props;
+
+    api.postComment(id, { body: comment, username }).then(newComment => {
+      this.setState((prevState, prevProps) => {
+        console.log(prevState);
+        const arr = [newComment, ...prevState.comments];
+        return {
+          comments: arr
+        };
+      });
+    });
+  };
+
   componentDidMount = () => {
-    api.getComments(this.props.article_id).then(comments => {
+    api.getComments(this.props.id).then(({ comments }) => {
       this.setState({ comments, isLoading: false });
     });
   };

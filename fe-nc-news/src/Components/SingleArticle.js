@@ -5,7 +5,6 @@ import ErrorHandler from './ErrorHandler';
 import { Link } from '@reach/router';
 import CommentList from './CommentList';
 import VoteUpdaterArticle from './VoteUpdaterArticle';
-import AddComment from './AddComment';
 
 class SingleArticle extends React.Component {
   state = {
@@ -50,14 +49,8 @@ class SingleArticle extends React.Component {
         <p>{body}</p>
         <VoteUpdaterArticle votes={votes} article_id={article.article_id} />
 
-        <AddComment
-          username={this.props.username}
-          article_id={this.props.id}
-          addTheComment={this.addComment}
-        />
-
         <p>Comments: {comment_count}</p>
-        <CommentList article_id={article.article_id} />
+        <CommentList id={article.article_id} username={username} />
       </div>
     );
   }
@@ -65,13 +58,6 @@ class SingleArticle extends React.Component {
   componentDidMount() {
     this.getArticleById();
   }
-
-  addComment = comment => {
-    const { id, username } = this.props;
-    api.postComment(id, comment, { username }).then(newComment => {
-      this.setState({ newComment });
-    });
-  };
 
   getArticleById = () => {
     api

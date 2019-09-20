@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import { Icon } from '@iconify/react';
+import codeOutline from '@iconify/icons-ant-design/code-outline';
+import footballIcon from '@iconify/icons-ion/football';
+import foodIcon from '@iconify/icons-mdi/food';
 
 const TopicsContainer = ({ slug, description }) => {
   return (
@@ -7,7 +11,12 @@ const TopicsContainer = ({ slug, description }) => {
       <Link className="article-link" to={`/topics/${slug}`}>
         <h2>{slug}</h2>
       </Link>
-      <h4>{description}</h4>
+      <div className="topic-icon">
+        {slug === 'coding' ? <Icon icon={codeOutline} /> : null}
+        {slug === 'football' ? <Icon icon={footballIcon} /> : null}
+        {slug === 'cooking' ? <Icon icon={foodIcon} /> : null}
+      </div>
+      <h3>{description}</h3>
     </div>
   );
 };
