@@ -28,6 +28,8 @@ class CommentList extends React.Component {
                 comment={comment}
                 key={comment.comment_id}
                 body={comment.body}
+                username={this.props.username}
+                author={comment.author}
               />
             );
           })}
@@ -38,7 +40,6 @@ class CommentList extends React.Component {
 
   addComment = comment => {
     const { id, username } = this.props;
-
     api
       .postComment(id, { body: comment, username })
       .then(newComment => {
