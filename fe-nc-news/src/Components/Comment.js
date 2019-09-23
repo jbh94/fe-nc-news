@@ -5,7 +5,7 @@ import VoteUpdater from './VoteUpdaterComment';
 import * as api from '../api';
 
 class Comment extends React.Component {
-  state = { err: null, comments: this.props.comment };
+  state = { err: null, comments: this.props.comment, deleted: false };
   render() {
     const {
       author,
@@ -49,9 +49,23 @@ class Comment extends React.Component {
     );
   }
 
+  //should possibly be in commentlist.js
   removeComment = () => {
     const { comment_id } = this.state.comments;
+    console.log(this.state.comments, 'comments');
+    console.log({ comment_id }, 'comment id destructured from state');
     api.deleteComment(comment_id);
+    this.setState(prevState => {
+      const { comments } = this.state;
+      console.log(prevState.comments);
+      console.log(prevState);
+      console.log({ comments }, 'comments destructured from state');
+
+      const result = prevState.comments.filter(
+        comment => comment.comments.comment_id !== comment_id
+      );
+      return { comments: result };
+    });
   };
 }
 

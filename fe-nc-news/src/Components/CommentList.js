@@ -6,7 +6,7 @@ import ErrorHandler from './ErrorHandler';
 import AddComment from './AddComment';
 
 class CommentList extends React.Component {
-  state = { comments: {}, isLoading: true };
+  state = { comments: [], isLoading: true };
 
   render() {
     const { comments, isLoading, err } = this.state;

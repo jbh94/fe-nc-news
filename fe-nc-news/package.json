@@ -37,6 +37,7 @@
     "@iconify/icons-foundation": "^1.0.1",
     "@iconify/icons-ion": "^1.0.2",
     "@iconify/icons-mdi": "^1.0.10",
+    "@iconify/icons-twemoji": "^1.0.3",
     "@iconify/react": "^1.1.1"
   }
 }

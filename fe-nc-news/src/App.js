@@ -10,6 +10,7 @@ import Topics from './Components/Topics';
 import SingleArticlePage from './Components/Pages/SingleArticlePage';
 import ErrorHandler from './Components/ErrorHandler';
 import Users from './Components/Users';
+import UsersPage from './Components/Pages/UsersPage';
 
 class App extends React.Component {
   state = {
@@ -33,6 +34,7 @@ class App extends React.Component {
           <SingleArticlePage path="/articles/:article_id" username={username} />
           <Topics path="/topics" username={username} />
           <ErrorHandler default />
+          <UsersPage path="/users" />
         </Router>
         <Footer />
       </div>
