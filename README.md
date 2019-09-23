@@ -6,8 +6,9 @@ NC News is a Front End Application using my Joe-NC-News backend database.
 
 Both front end & back end environments are hosted at the links below:
 
-Front end: 'URL' + 'GITHUB REPO'
-Back end: 'URL' + 'GITHUB REPO'
+Front end: [Hosted](https://joehumphreys-nc-news.netlify.com) | [GitHub Repo](https://github.com/radiob0x/fe-nc-news)
+
+Back end: [Hosted](https://joeh-nc-news.herokuapp.com/api/) | [GitHub Repo](https://github.com/radiob0x/joe-nc-news)
 
 ## 1 Getting Started
 
