@@ -1,6 +1,6 @@
 import React from 'react';
-import * as api from '../api';
-import Loading from './Loading';
+import * as api from '../../../api';
+import Loading from '../Utils/Loading';
 
 class Users extends React.Component {
   state = {

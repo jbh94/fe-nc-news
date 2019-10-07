@@ -1,16 +1,15 @@
-import React from 'react';
-import Comment from './Comment';
-import * as api from '../api';
-import Loading from './Loading';
-import ErrorHandler from './ErrorHandler';
-import AddComment from './AddComment';
+import React from "react";
+import Comment from "./Comment";
+import * as api from "../../../api";
+import Loading from "../Utils/Loading";
+import ErrorHandler from "../Utils/ErrorHandler";
+import AddComment from "./AddComment";
 
 class CommentList extends React.Component {
   state = { comments: [], isLoading: true };
 
   render() {
     const { comments, isLoading, err } = this.state;
-
     if (isLoading) return <Loading />;
     if (err) return <ErrorHandler {...err} />;
 
@@ -25,6 +24,7 @@ class CommentList extends React.Component {
           {comments.map(comment => {
             return (
               <Comment
+                comments={comments}
                 comment={comment}
                 key={comment.comment_id}
                 body={comment.body}

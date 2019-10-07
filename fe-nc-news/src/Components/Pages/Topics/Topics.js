@@ -1,7 +1,7 @@
 import React from 'react';
-import * as api from '../api';
-import TopicsContainer from './TopicsContainer';
-import Loading from './Loading';
+import * as api from '../../../api';
+import TopicsPage from './TopicsPage';
+import Loading from '../Utils/Loading';
 
 class Topics extends React.Component {
   state = {
@@ -19,7 +19,7 @@ class Topics extends React.Component {
     return (
       <div>
         {topics.map(topic => {
-          return <TopicsContainer key={topic.slug} {...topic} />;
+          return <TopicsPage key={topic.slug} {...topic} />;
         })}
       </div>
     );

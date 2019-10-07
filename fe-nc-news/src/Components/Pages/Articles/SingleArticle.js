@@ -1,18 +1,18 @@
-import React from 'react';
-import * as api from '../api';
-import Loading from './Loading';
-import ErrorHandler from './ErrorHandler';
-import { Link } from '@reach/router';
-import CommentList from './CommentList';
-import VoteUpdaterArticle from './VoteUpdaterArticle';
+import React from "react";
+import * as api from "../../../api";
+import Loading from "../Utils/Loading";
+import ErrorHandler from "../Utils/ErrorHandler";
+import { Link } from "@reach/router";
+import CommentList from "../Comments/CommentList";
+import VoteUpdaterArticle from "../Utils/VoteUpdaterArticle";
 
 class SingleArticle extends React.Component {
   state = {
     article: {},
     isLoading: true,
     err: null,
-    sort_by: 'created_at',
-    order: 'desc'
+    sort_by: "created_at",
+    order: "desc"
   };
 
   render() {
@@ -60,7 +60,6 @@ class SingleArticle extends React.Component {
     api
       .getArticle(this.props.id)
       .then(({ article }) => {
-        // this.props.id relates to parametric endpoint in App.js
         this.setState({ article, isLoading: false });
       })
       .catch(({ response }) => {

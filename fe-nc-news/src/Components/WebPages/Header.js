@@ -8,7 +8,7 @@ function Header(props) {
         <img
           className="header-logo"
           alt="Logo"
-          src={require('../assets/newspaper.png')}
+          src={require('../../assets/newspaper.png')}
         />
       </div>
       <h1>NC News</h1>

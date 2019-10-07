@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from '@reach/router';
-import ErrorHandler from './ErrorHandler';
-import VoteUpdater from './VoteUpdaterComment';
-import * as api from '../api';
+import React from "react";
+import { Link } from "@reach/router";
+import ErrorHandler from "../Utils/ErrorHandler";
+import VoteUpdater from "../Utils/VoteUpdaterComment";
+import * as api from "../../../api";
 
 class Comment extends React.Component {
-  state = { err: null, comments: this.props.comment, deleted: false };
+  state = { err: null, hide: false };
   render() {
     const {
       author,
@@ -17,6 +17,10 @@ class Comment extends React.Component {
     } = this.props.comment;
 
     const { username } = this.props;
+
+    if (this.state.hide === true) {
+      return null;
+    }
 
     if (err) {
       return <ErrorHandler {...err} />;
@@ -37,7 +41,7 @@ class Comment extends React.Component {
               className="delete-button"
               onClick={e =>
                 window.confirm(
-                  'Are you sure you want to delete this comment?'
+                  "Are you sure you want to delete this comment?"
                 ) && this.removeComment(e)
               }
             >
@@ -49,23 +53,10 @@ class Comment extends React.Component {
     );
   }
 
-  //should possibly be in commentlist.js
   removeComment = () => {
-    const { comment_id } = this.state.comments;
-    console.log(this.state.comments, 'comments');
-    console.log({ comment_id }, 'comment id destructured from state');
+    const { comment_id } = this.props.comment;
     api.deleteComment(comment_id);
-    this.setState(prevState => {
-      const { comments } = this.state;
-      console.log(prevState.comments);
-      console.log(prevState);
-      console.log({ comments }, 'comments destructured from state');
-
-      const result = prevState.comments.filter(
-        comment => comment.comments.comment_id !== comment_id
-      );
-      return { comments: result };
-    });
+    this.setState({ hide: true });
   };
 }
 

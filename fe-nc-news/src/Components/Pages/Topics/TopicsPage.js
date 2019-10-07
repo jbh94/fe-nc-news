@@ -5,7 +5,7 @@ import codeOutline from '@iconify/icons-ant-design/code-outline';
 import footballIcon from '@iconify/icons-ion/football';
 import foodIcon from '@iconify/icons-mdi/food';
 
-const TopicsContainer = ({ slug, description }) => {
+const TopicsPage = ({ slug, description }) => {
   return (
     <div className="article-container">
       <Link className="article-link" to={`/topics/${slug}`}>
@@ -21,4 +21,4 @@ const TopicsContainer = ({ slug, description }) => {
   );
 };
 
-export default TopicsContainer;
+export default TopicsPage;

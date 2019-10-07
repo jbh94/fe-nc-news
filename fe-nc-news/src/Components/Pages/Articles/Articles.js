@@ -1,12 +1,12 @@
 import React from 'react';
-import * as api from '../api';
+import * as api from '../../../api';
 import ArticleContainer from './ArticleContainer';
-import Loading from '../Components/Loading';
-import Sort from './Sort';
+import Loading from '../Utils/Loading';
+import Sort from '../Utils/Sort';
 
 class Articles extends React.Component {
   state = {
-    articles: {},
+    articles: [],
     isLoading: true,
     order: 'desc',
     sort_by: 'created_at'

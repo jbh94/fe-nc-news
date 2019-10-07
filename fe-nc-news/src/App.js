@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
 import { Router } from '@reach/router';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import Nav from './Components/Nav.js';
-import Articles from './Components/Articles';
-import Homepage from './Components/Pages/Homepage';
-import Topics from './Components/Topics';
-import SingleArticlePage from './Components/Pages/SingleArticlePage';
-import ErrorHandler from './Components/ErrorHandler';
-import Users from './Components/Users';
-import UsersPage from './Components/Pages/UsersPage';
+import Header from './Components/WebPages/Header';
+import Footer from './Components/WebPages/Footer';
+import Nav from './Components/WebPages/Nav.js';
+import Articles from './Components/Pages/Articles/Articles';
+import Homepage from './Components/WebPages/Homepage';
+import Topics from './Components/Pages/Topics/Topics';
+import SingleArticlePage from './Components/Pages/Articles/SingleArticlePage';
+import ErrorHandler from './Components/Pages/Utils/ErrorHandler';
+import Users from './Components/Pages/Users/Users';
+import UsersPage from './Components/Pages/Users/UsersPage';
 
 class App extends React.Component {
   state = {
@@ -34,7 +34,7 @@ class App extends React.Component {
           <SingleArticlePage path="/articles/:article_id" username={username} />
           <Topics path="/topics" username={username} />
           <ErrorHandler default />
-          <UsersPage path="/users" />
+          <UsersPage path="/users" username={username} />
         </Router>
         <Footer />
       </div>

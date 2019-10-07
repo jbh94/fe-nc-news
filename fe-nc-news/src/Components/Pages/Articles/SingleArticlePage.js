@@ -1,5 +1,5 @@
 import React from 'react';
-import SingleArticle from '../SingleArticle';
+import SingleArticle from './SingleArticle';
 
 const SingleArticlePage = props => {
   return (

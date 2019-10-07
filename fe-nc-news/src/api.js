@@ -5,11 +5,9 @@ const request = axios.create({
 });
 
 export const getArticles = queries => {
-  return request
-    .get('/articles', { params: queries })
-    .then(({ data: articles }) => {
-      return articles;
-    });
+  return request.get('/articles').then(({ data: articles }) => {
+    return articles;
+  });
 };
 
 export const getArticlesWithParams = (topic, sort_by, order) => {
@@ -27,8 +25,8 @@ export const getArticlesWithParams = (topic, sort_by, order) => {
 };
 
 export const getTopicsFromArticles = slug => {
-  return request.get(`/articles?topic=${slug}`).then(({ data: articles }) => {
-    return articles;
+  return request.get(`/articles?topic=${slug}`).then(({ data }) => {
+    return data;
   });
 };
 
